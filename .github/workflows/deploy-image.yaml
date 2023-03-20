@@ -28,12 +28,12 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action
+        uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-tiny
 
       - name: Build and push Docker image
-        uses: docker/build-push-action
+        uses: docker/build-push-action@master
         with:
           context: .
           push: true
@@ -43,12 +43,12 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action
+        uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell
 
       - name: Build and push Docker image
-        uses: docker/build-push-action
+        uses: docker/build-push-action@master
         with:
           context: .
           push: true
@@ -58,12 +58,12 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action
+        uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell-cs
 
       - name: Build and push Docker image
-        uses: docker/build-push-action
+        uses: docker/build-push-action@master
         with:
           context: .
           push: true
