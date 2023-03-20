@@ -27,46 +27,46 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta
+        id: meta_bare
         uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-tiny
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image bare
         uses: docker/build-push-action@master
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta_bare.outputs.tags }}
+          labels: ${{ steps.meta_bare.outputs.labels }}
           target: bare
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta
+        id: meta_hunspell
         uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image hunspell
         uses: docker/build-push-action@master
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta_hunspell.outputs.tags }}
+          labels: ${{ steps.meta_hunspell.outputs.labels }}
           target: with-hunspell
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta
+        id: meta_hunspell_cs
         uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell-cs
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image hunspell-cs
         uses: docker/build-push-action@master
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta_hunspell_cs.outputs.tags }}
+          labels: ${{ steps.meta_hunspell_cs.outputs.labels }}
           target: with-hunspell-cs
