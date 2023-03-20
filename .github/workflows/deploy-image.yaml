@@ -1,0 +1,77 @@
+name: Create and publish a Docker image
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'master'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta_bare
+        uses: docker/metadata-action@master
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-tiny
+
+      - name: Build and push Docker image » tiny
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta_bare.outputs.tags }}
+          labels: ${{ steps.meta_bare.outputs.labels }}
+          target: bare
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta_hunspell
+        uses: docker/metadata-action@master
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell
+
+      - name: Build and push Docker image » hunspell
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta_hunspell.outputs.tags }}
+          labels: ${{ steps.meta_hunspell.outputs.labels }}
+          target: with-hunspell
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta_hunspell_cs
+        uses: docker/metadata-action@master
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell-cs
+
+      - name: Build and push Docker image » hunspell-cs
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta_hunspell_cs.outputs.tags }}
+          labels: ${{ steps.meta_hunspell_cs.outputs.labels }}
+          target: with-hunspell-cs
