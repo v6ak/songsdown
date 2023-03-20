@@ -37,7 +37,7 @@ jobs:
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value={{branch}}
-            type=raw,value={{branch}}-{{sha}}
+            type=raw,value={{base_ref}}-{{sha}}
 
       - name: Build and push Docker image » tiny
         uses: docker/build-push-action@master
