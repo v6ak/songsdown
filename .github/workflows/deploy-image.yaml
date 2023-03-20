@@ -2,12 +2,11 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['master']
+    branches: ['master', 'devel']
   pull_request:
-    types:
-      - opened
     branches:
       - 'master'
+      - 'devel'
 
 env:
   REGISTRY: ghcr.io
@@ -36,7 +35,9 @@ jobs:
         uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-tiny
-          tags: type=raw,value=latest,enable={{is_default_branch}}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value={{branch}}
 
       - name: Build and push Docker image » tiny
         uses: docker/build-push-action@master
@@ -52,7 +53,9 @@ jobs:
         uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell
-          tags: type=raw,value=latest,enable={{is_default_branch}}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value={{branch}}
 
       - name: Build and push Docker image » hunspell
         uses: docker/build-push-action@master
@@ -68,7 +71,9 @@ jobs:
         uses: docker/metadata-action@master
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-hunspell-cs
-          tags: type=raw,value=latest,enable={{is_default_branch}}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value={{branch}}
 
       - name: Build and push Docker image » hunspell-cs
         uses: docker/build-push-action@master
