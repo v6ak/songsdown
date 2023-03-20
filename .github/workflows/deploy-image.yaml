@@ -36,8 +36,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-tiny
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value={{branch}}
-            type=raw,value={{base_ref}}-{{sha}}
+            type=raw,value=${GITHUB_REF##*/}
+            type=raw,value=${GITHUB_REF##*/}-{{sha}}
 
       - name: Build and push Docker image » tiny
         uses: docker/build-push-action@master
