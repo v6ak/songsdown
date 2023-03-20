@@ -46,7 +46,7 @@ with user-friendly syntax.
 
 ## Example LaTeX output
 
-    $ docker run -i TODO latex -o /dev/stdout '--no-chords-line-prefix=\nc' /dev/stdin < lorem-ipsum.txt
+    $ docker run -i ghcr.io/v6ak/songsdown-tiny latex -o /dev/stdout '--no-chords-line-prefix=\nc' /dev/stdin < lorem-ipsum.txt
     \beginsong{Lorem Ipsum Song}[by={Some Artist}]\transpose{0}
     \beginverse
     \[F]Lorem \[A]ipsum \[C]dolor sit amet,
@@ -103,6 +103,14 @@ However, the implementation of transposition in the Songs package seems to be ve
 
 Currently, it is distributed just as a Docker image.
 [Native image](https://www.graalvm.org/latest/reference-manual/native-image/) allows us to make the Docker image tiny.
+You can chose between several packages:
+
+https://github.com/v6ak/songsdown/pkgs/container/songsdown-tiny
+* [ghcr.io/v6ak/songsdown-tiny](https://ghcr.io/v6ak/songsdown-tiny) — tiny image (no spellcheck support)
+* [ghcr.io/v6ak/songsdown-hunspell](https://ghcr.io/v6ak/songsdown-hunspell) — Alpine-based image with Hunspell
+  (for spellcheck), but no dictionary. You need to add a dicrionary yourself.
+* [ghcr.io/v6ak/songsdown-hunspell-cs](https://ghcr.io/v6ak/songsdown-hunspell-cs) – Alpine-based image with Hunspell
+  (for spellcheck) and Czech dictionary.
 
 When you build it, it should run in any recent JRE (when compiled to JVM bytecode) and probably in a JS engine
 (when compiled to Javscript using Scala.js).
