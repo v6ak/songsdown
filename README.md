@@ -75,7 +75,7 @@ with user-friendly syntax.
     \textnote{R:}
     \endsong%
 
-## Removal space for chords in chord-less verses
+## Removal of space for chords in chord-less verses
 
 The Songs package allows you to render the song either with verses or completely without them. However, one might want
 compact output with chords – the first verse contains chords, other verses have no explicit chords (and no space for
