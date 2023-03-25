@@ -52,11 +52,15 @@ final case class LatexCommand(
   latexConfig: LaTeXConfig = LaTeXConfig(),
 ) extends Command:
 
-  def addLiteralNames(path: Path): LatexCommand = {
-    val newNames = Source.fromFile(path.toFile).getLines.map(_.trim).filterNot(_=="").toSet
+  def addLiteralNames(path: Path): LatexCommand = try{
+    val newNames = Source.fromFile(path.toFile, "utf-8").getLines.map(_.trim).filterNot(_=="").toSet
     copy(
       literalNames = literalNames ++ newNames
     )
+  } catch {
+    case e =>
+      e.printStackTrace()
+      throw e
   }
 
   private def sort(songs: IndexedSeq[(Option[Int], Song)]) = songOrderingOption match

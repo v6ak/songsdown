@@ -21,7 +21,13 @@ RUN \
 FROM  ghcr.io/graalvm/native-image:ol9-java17-22.3.1 AS native-image
 COPY --link --from=sbt-build /root/app/batch-converter/target/scala-3.2.2/batch-converter.jar assembly.jar
 COPY --link reflection.json .
-RUN native-image -H:ReflectionConfigurationFiles=reflection.json --static --no-fallback -H:+ReportExceptionStackTraces -jar assembly.jar
+RUN native-image \
+  -H:ReflectionConfigurationFiles=reflection.json \
+  --static \
+  --no-fallback \
+  -H:+ReportExceptionStackTraces \
+  -Dfile.encoding=utf-8 \
+  -jar assembly.jar
 
 
 # minimal image with the native executable; spellcheck will not work, as there is no Hunspell
