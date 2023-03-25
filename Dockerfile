@@ -16,6 +16,8 @@ RUN \
   --mount=type=cache,target=/root/.cache \
   sbt 'project batchConverter' test assembly
 
+FROM sbt-build as quick
+ENTRYPOINT ["java", "-Dfile.encoding=utf-8", "-jar", "/root/app/batch-converter/target/scala-3.2.2/batch-converter.jar"]
 
 # JAR file —> native executable
 FROM  ghcr.io/graalvm/native-image:ol9-java17-22.3.1 AS native-image
