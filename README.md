@@ -18,7 +18,7 @@ with user-friendly syntax.
 
     /// spellcheck-whitelist: somenewword
     Some Artist
-    Lorem Ipsum Song
+    Lorem Ipsum Song | Alternative song title for index
     
     [F]Lorem [A]ipsum [C]dolor sit amet,
     consectetuer [G]adi[C]pis[A]cing elit.
@@ -47,7 +47,7 @@ with user-friendly syntax.
 ## Example LaTeX output
 
     $ docker run -i ghcr.io/v6ak/songsdown-tiny latex -o /dev/stdout '--no-chords-line-prefix=\nc' /dev/stdin < lorem-ipsum.txt
-    \beginsong{Lorem Ipsum Song}[by={Some Artist}]\transpose{0}
+    \beginsong{Lorem Ipsum Song}[by={Some Artist},ititle={Alternative song title for index}]\transpose{0}
     \beginverse
     \[F]Lorem \[A]ipsum \[C]dolor sit amet,
     consectetuer \[G]adi\[C]pis\[A]cing elit.
@@ -73,7 +73,7 @@ with user-friendly syntax.
     \nc Duis viverra diam non justo.
     \endverse
     \textnote{R:}
-    \endsong%
+    \endsong
 
 ## Removal of space for chords in chord-less verses
 

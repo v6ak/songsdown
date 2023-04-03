@@ -72,15 +72,16 @@ object Parser:
       case _ => throw new FormatException("Empty song", None, None)
     val (superComments, metaParagraphWithOrdinaryComments) = 
       metaParagraphWithComments.partition(isSuperComment)
-    val (author, name, transposition) = metaParagraphWithOrdinaryComments.filterNot(isComment) match
-      case Seq((authorL, _), (nameL, _)) => (authorL, nameL, 0)
-      case Seq((authorL, _), (nameL, _), transpositionL) =>
-        (authorL, nameL, parseTransposition(transpositionL))
+    val (author, names, transposition) = metaParagraphWithOrdinaryComments.filterNot(isComment) match
+      case Seq((authorL, _), (namesL, _)) => (authorL, namesL, 0)
+      case Seq((authorL, _), (namesL, _), transpositionL) =>
+        (authorL, namesL, parseTransposition(transpositionL))
       case other => throw FormatException(
         s"Expected two or three lines in the first paragraph, got ${other.length}",
         Some(other.map(_._1).mkString("\n")),
         None
       )
+    val name :: altNames = names.split('|').map(_.trim).toList
     val meta = superComments
       .map(sc => sc._1.drop(3).trim.span(_ != ':'))
       .groupBy(_._1)
@@ -94,7 +95,7 @@ object Parser:
       throw new FormatException("Unknown meta: "+unknownKeys.mkString(", "), None, None)
     }
     val elements = paragraphs.filterNot(_.isEmpty).map(parseParagraph)
-    Song(author, name, transposition, elements, spellcheckWhitelist)
+    Song(author, name, altNames, transposition, elements, spellcheckWhitelist)
   }
   
   private def parseParagraph(rhymes: Seq[(String, Int)]) = {
