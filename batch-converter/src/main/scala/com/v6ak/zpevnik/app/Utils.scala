@@ -71,6 +71,9 @@ object Utils:
   
   def stringComparatorForLocale(locale: Locale): Comparator[String] = {
     val collator = Collator.getInstance(locale).asInstanceOf[Comparator[String]]
+    if (!Locale.getAvailableLocales.contains(locale)) {
+      throw Exception(s"Unknown locale: $locale")
+    }
     locale.getLanguage match {
       case "cs" => // Special fixes for Czech
         // Hack comes from http://jan.baresovi.cz/dr/en/java-collator-spaces
