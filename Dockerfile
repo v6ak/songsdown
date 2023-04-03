@@ -17,15 +17,17 @@ RUN \
   sbt 'project batchConverter' test assembly
 
 FROM sbt-build as quick
-ENTRYPOINT ["java", "-Dfile.encoding=utf-8", "-jar", "/root/app/batch-converter/target/scala-3.2.2/batch-converter.jar"]
+ENTRYPOINT ["java", "-Dfile.encoding=utf-8", "--add-modules", "jdk.localedata", "-jar", \
+  "/root/app/batch-converter/target/scala-3.2.2/batch-converter.jar"]
 
 # JAR file —> native executable
-FROM  ghcr.io/graalvm/native-image:ol9-java17-22.3.1 AS native-image
+FROM ghcr.io/graalvm/native-image:ol9-java17-22.3.1 AS native-image
 COPY --link --from=sbt-build /root/app/batch-converter/target/scala-3.2.2/batch-converter.jar assembly.jar
 COPY --link reflection.json .
 RUN native-image \
   -H:ReflectionConfigurationFiles=reflection.json \
   --static \
+  -H:+IncludeAllLocales \
   --no-fallback \
   -H:+ReportExceptionStackTraces \
   -Dfile.encoding=utf-8 \
