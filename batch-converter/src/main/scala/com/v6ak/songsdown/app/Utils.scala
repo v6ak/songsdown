@@ -1,11 +1,11 @@
-package com.v6ak.zpevnik.app
+package com.v6ak.songsdown.app
 
 import java.io._
 import java.nio.file.{Files, Path, Paths}
 import java.text.{RuleBasedCollator, Collator}
 import java.util.{Comparator, Locale}
 
-import com.v6ak.zpevnik._
+import com.v6ak.songsdown._
 
 import scala.jdk.CollectionConverters._
 import scala.io.{BufferedSource, Source}
