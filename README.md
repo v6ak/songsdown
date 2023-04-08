@@ -97,7 +97,7 @@ You can set chords transposition by adding a line with number after the song tit
     Lorem Ipsum Song
     +1
 
-However, the implementation of transposition in the Songs package seems to be very limited
+However, the implementation of transposition in the Songs package seems to be very limited.
 
 ## Distribution
 
