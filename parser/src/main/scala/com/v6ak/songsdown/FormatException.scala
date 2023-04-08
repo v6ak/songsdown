@@ -1,4 +1,4 @@
-package com.v6ak.zpevnik
+package com.v6ak.songsdown
 
 case class FormatException(
   error: String,

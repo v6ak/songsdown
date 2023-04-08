@@ -1,10 +1,10 @@
-package com.v6ak.zpevnik.app
+package com.v6ak.songsdown.app
 
 import java.io._
 import java.nio.file.{Files, Path, Paths}
 import java.util.{Comparator, Locale}
 
-import com.v6ak.zpevnik._
+import com.v6ak.songsdown._
 import monocle.Lens
 import monocle.syntax.all._
 import monocle.macros.GenLens
@@ -14,7 +14,7 @@ import scala.jdk.CollectionConverters._
 import scala.io.{BufferedSource, Source}
 import scala.language.higherKinds
 import scala.collection.parallel.CollectionConverters._
-import com.v6ak.zpevnik.app.Utils._
+import com.v6ak.songsdown.app.Utils._
 
 
 abstract sealed class Command:

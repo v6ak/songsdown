@@ -4,7 +4,7 @@ import matchers._
 import java.util.{Comparator, Locale}
 import java.text.Collator
 
-import com.v6ak.zpevnik.app.Utils.stringComparatorForLocale
+import com.v6ak.songsdown.app.Utils.stringComparatorForLocale
 
 class CzechStringComparatorForLocaleTest extends AnyFlatSpec with should.Matchers:
 
