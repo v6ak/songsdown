@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <style>
+  #editor, #preview{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  #editor{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 50%;
+  }
+  #preview, #overlay.dim{
+    position: absolute;
+    top: 5ex;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+  }
+  #preview{
+    z-index: 100;
+  }
+  #infobar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 5ex;
+    left: 50%;
+    padding: 5px;
+    background-color: yellow;
+    color: black;
+    z-index 900;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #overlay.dim{
+    z-index 1000;
+    background-color: black;
+    opacity: 0.25;
+  }
+  #editor textarea, #preview iframe{
+    resize: none;
+    margin: 0;
+    border: 0px none;
+  }
+  #editor form{
+    padding: 0;
+    margin: 0;
+  }
+  #editor form, #editor textarea, #preview iframe {
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #new-window-link-container{
+    display: block;
+    float: right;
+  }
+  </style>
+  <script type="text/javascript" src="main.js"></script>
+  </head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" id="editor">
+      <form id="f">
+        <textarea id="t" name="data" readonly></textarea>
+      </form>
+    </div>
+    <div id="infobar">
+      <span id="new-window-link-container"><a href="#" id="new-window-link" target="_blank" style="display: none;">Open preview in new window</a></span>
+      <a href="https://github.com/v6ak/songsdown" id="source-link" target="_blank">Source code</a>
+      <span id="loader"></span>
+    </div>
+  </div>
+  <div id="overlay"></div>
+  <div class="col-md-6" id="preview">
+    <iframe id="preview-iframe"></iframe>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/// spellcheck-whitelist: somenewword
+Some Artist
+Lorem Ipsum Song | Alternative song title for index
+
+[F]Lorem [A]ipsum [C]dolor sit amet,
+consectetuer [G]adi[C]pis[A]cing elit.
+Nullam [F]feugiat,
+turpis at [E]pulvinar [G]vulputate,
+erat libero tristique [A]tellus,
+nec bibendum [F]odio risus sit amet ante.
+
+R: [F]Phasellus [E]faucibus molestie nisl.
+Suspendisse sagittis [F]ultrices augue.
+Quis autem vel [A]eum iure reprehenderit
+qui in ea [G]voluptate velit esse
+quam nihil [C]molestiae consequatur,
+vel illum [E]qui dolorem eum fugiat
+quo voluptas [F]nulla pariatur?
+
+Temporibus autem quibusdam et aut officiis,
+debitis aut rerum necessitatibus
+saepe eveniet ut et voluptates | repudiandae
+sint et molestiae non recusandae.
+Duis viverra diam non justo.
+
+R:
+
+„Příliš žluťoučký kůň úpěl ďábelské ódy…“

@@ -1,0 +1,43 @@
+\documentclass[a5paper]{article}
+
+\usepackage[chorded]{songs}
+
+% If you want to add the correct hyphenation, you need to specify the language. 
+%\usepackage[czech]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\renewcommand{\everychorus}{\textnote{Chorus:}}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{0in}
+\setlength{\topskip}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\settowidth{\versenumwidth}{1.\ }
+\renewcommand{\lyricfont}{\sffamily\small}
+\renewcommand{\printchord}{\bfseries\sffamily\small}
+\newcommand{\nc}{\ifchorded\vspace{-10pt}\fi}
+\usepackage[top=1.5cm,bottom=2cm,left=3cm,right=1.5cm]{geometry}
+\let\textquotedbl="
+
+\songcolumns{1}
+\pagestyle{empty}
+\versesep=12pt
+\renewcommand{\clineparams}{
+  \baselineskip=7pt
+  \lineskiplimit=0pt
+  \lineskip=0pt
+}
+
+
+\pagenumbering{arabic}
+
+\pagestyle{empty}
+\begin{document}
+\begin{songs}{}
+\includegeneratedcontent
+\end{songs}
+
+
+\end{document}

@@ -14,6 +14,15 @@ with user-friendly syntax.
 * optionally removes space for chords in chord-less verses
 * chord transposition (limited by Songs package)
 
+## Web-based editor
+
+You can try [web-based editor](https://v6ak.github.io/songsdown) live. Note that it has several limitations:
+
+* It requires a browser with PDF support. With mobile browsers, you are probably out of luck.
+* Hyphenation might be wrong, there is no language specified.
+* Forced line breaks work incorrectly.
+* It is designed for trial and song editing, not for final typesetting.
+
 ## Example input
 
     /// spellcheck-whitelist: somenewword

@@ -1,0 +1,97 @@
+# List LaTeX files that are really needed. How to get this list:
+# 1. Run an instance of https://github.com/SwiftLaTeX/Texlive-Ondemand
+# 2. Adjust setTexliveEndpoint call in swiftlatex-filter.js to the Texlive-Ondemand instance.
+# 3. Disable prefetching in swiftlatex-filter.js.
+# 4. Build web-editor with SwiftLaTeX filter.
+# 5. Open Network tab in your browser's Developer Console and log requests when loading the web-editor.
+# 6. Save HAR file.
+# 7. Extract URLs from the HAR file using jq: jq --raw-output '.log.entries | map(.request.url)[]' | sort
+# 8. Remove the URL prefixes.
+# 9. Adjust this list according to the result. You might want to skip some URLs that return 301.
+
+pdftex/10/swiftlatexpdftex.fmt
+pdftex/11/pdftex.map
+pdftex/26/article.cls
+pdftex/26/color.cfg
+pdftex/26/color.sty
+#pdftex/26/geometry.cfg
+pdftex/26/geometry.sty
+pdftex/26/iftex.sty
+pdftex/26/ifvtex.sty
+pdftex/26/inputenc.sty
+pdftex/26/keyval.sty
+pdftex/26/l3backend-pdfmode.def
+#pdftex/26/main.aux
+pdftex/26/pdftex.def
+pdftex/26/size10.clo
+pdftex/26/supp-pdf.mkii
+pdftex/26/ucs.sty
+pdftex/26/ucsencs.def
+pdftex/26/uni-global.def
+pdftex/26/utf8x.def
+#pdftex/3/cmbx5
+pdftex/3/cmmi10
+pdftex/3/cmmi12
+pdftex/3/cmmi6
+pdftex/3/cmmi8
+pdftex/3/cmmi9
+pdftex/3/cmr10
+pdftex/3/cmr12
+pdftex/3/cmr6
+pdftex/3/cmr8
+pdftex/3/cmr9
+#pdftex/3/cmsl8
+pdftex/3/cmss10
+#pdftex/3/cmss9
+pdftex/3/cmssbx10
+pdftex/3/cmssi10
+pdftex/3/cmssi12
+pdftex/3/cmsy10
+pdftex/3/cmsy6
+pdftex/3/cmsy8
+pdftex/3/cmsy9
+#pdftex/32/cmbx5.pfb
+#pdftex/32/cmss9.pfb
+#pdftex/32/cmssbx10.pfb
+#pdftex/32/cmssi12.pfb
+#pdftex/33/cmbx5.vf
+#pdftex/33/cmss9.vf
+#pdftex/33/cmssbx10.vf
+#pdftex/33/cmssi12.vf
+
+# Needs for various Unicode characters
+pdftex/26/uni-1.def
+pdftex/26/uni-0.def
+pdftex/26/uni-32.def
+
+
+pdftex/26/fontenc.sty
+pdftex/26/t1cmss.fd
+pdftex/3/ecbx0500
+pdftex/3/ecrm0500
+pdftex/3/ecrm1000
+pdftex/3/ecsi1000
+pdftex/3/ecsi1440
+pdftex/3/ecsl0500
+pdftex/3/ecss0900
+pdftex/3/ecss1000
+pdftex/3/ecsx0800
+pdftex/3/ecsx0900
+pdftex/3/ecsx1000
+pdftex/3/ecsx1728
+#pdftex/33/ecbx0500.vf
+#pdftex/33/ecsi1440.vf
+#pdftex/33/ecss0900.vf
+#pdftex/33/ecsx0900.vf
+#pdftex/33/ecsx1728.vf
+#pdftex/41/ecbx0500.pgc
+#pdftex/41/ecsi1440.pgc
+#pdftex/41/ecss0900.pgc
+#pdftex/41/ecsx0900.pgc
+#pdftex/41/ecsx1728.pgc
+
+pdftex/pk/600/ecbx0500
+pdftex/pk/600/ecsi1440
+pdftex/pk/600/ecss0900
+pdftex/pk/600/ecsx0900
+pdftex/pk/600/ecsx1728
